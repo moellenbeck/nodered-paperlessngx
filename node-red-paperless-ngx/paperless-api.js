@@ -13,21 +13,30 @@ module.exports = class PaperlessNgxApi {
         return new this(baseurl, apiKey)
     }
 
-    async request(method, endpoint, params) {
+    async request(method, endpoint, params, data = undefined) {
         let url = `${this._baseUrl}${endpoint}`
         if (params) {
             url += `?${params}`
         }
 
-
-        const response = await fetch(url, {
+        const request = {
             method: method,
             credentials: 'include',
             headers: {
                 Authorization: 'Token ' + this._authToken,
-                Accept: 'application/json'
+                Accept: 'application/json',
             },
-        })
+        }
+        if (data) {
+            request.headers = {
+                ...request.headers,
+                'Content-Type': 'application/json'
+            }
+            request.body = JSON.stringify(data)
+        }
+
+        const response = await fetch(url, request)
+
         const result = await response.json()
         return result?.results
     }
@@ -66,6 +75,12 @@ module.exports = class PaperlessNgxApi {
             page_size: 100000
         })
         return await this.request('GET', '/api/custom_fields/', params)
+    }
+
+    async updateDocument(documentId, data) {
+        const url = `/api/documents/${documentId}/`
+        console.log("updating", url)
+        return await this.request('PATCH', url, undefined, data)
     }
 
 }

@@ -1,0 +1,63 @@
+<script type="text/javascript">
+    RED.nodes.registerType('paperless-ngx-update-document', {
+        name: "Update document",
+        category: 'Paperless NGX',
+        color: '#387440',
+
+        defaults: {
+            server: { value: "", type: "paperless-ngx-server", required: true },
+            name: { value: undefined, required: false },
+            docid: { value: "", required: false },
+
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "font-awesome/fa-write",
+        label: function () {
+            return this.name ? this.name : "Update document";
+
+        },
+        paletteLabel: "Update document",
+
+    });
+
+
+</script>
+
+<script type="text/html" data-template-name="paperless-ngx-update-document">
+    <div class="form-row">
+        <label for="node-input-server"><i class="fa fa-server"></i> Server</label>
+        <input type="text" id="node-input-server" placeholder="Server">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-docid"><i class="fa fa-hashtag"></i> Document ID</label>
+        <input type="text" id="node-input-docid">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="paperless-ngx-update-document">
+    <p>Updates a document in paperless ngx.</p>
+    <h3>Inputs</h3>
+    <p>
+        <code>payload</code> An object with the keys to update in the document. All keys in this object will be sent to paperless.
+    </p>
+    <p>
+        <code>docid</code> An integer with the document's id in paperless ngx.
+    </p>
+    <h3>Outputs</h3>
+    <p>
+        Array of paperless correspondents.
+    </p>
+    <h3>Attributes</h3>
+    <p>
+        <code>name</code> Label for the node
+    </p>
+    <p>
+        <code>document id</code> ID of the document in paperless ngx. This will take precedence over the <code>docid</code> field value of any message.
+    </p>
+</script>
