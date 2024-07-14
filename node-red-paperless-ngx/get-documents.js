@@ -9,10 +9,10 @@ module.exports = function (RED) {
         this.enrich = config.enrich
 
         node.on('input', async function (msg, send, done) {
-            const protocol = this.server.tlsEnabled === true ? "https" : "http";
-            const baseurl = protocol + "://" + this.server.hostname + ':' + this.server.port;
-
-            const api = new PaperlessApi(baseurl, this.server.apiKey)
+            const api = PaperlessApi.create(this.server.hostname,
+                this.server.port,
+                this.server.apiKey,
+                this.server.tlsEnabled)
             let documents = await api.getDocuments(this.filter)
             if (this.enrich) {
                 const tags = await api.getTags()

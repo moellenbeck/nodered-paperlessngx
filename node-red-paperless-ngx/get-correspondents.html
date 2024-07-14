@@ -1,0 +1,48 @@
+<script type="text/javascript">
+    RED.nodes.registerType('paperless-ngx-get-correspondents', {
+        name: "Get correspondents",
+        category: 'Paperless NGX',
+        color: '#387440',
+
+        defaults: {
+            server: { value: "", type: "paperless-ngx-server", required: true },
+            name: { value: undefined, required: false }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "font-awesome/fa-person",
+        label: function () {
+            return this.name ? this.name : "Get correspondents";
+
+        },
+        paletteLabel: "Get correspondents",
+
+    });
+
+
+</script>
+
+<script type="text/html" data-template-name="paperless-ngx-get-correspondents">
+    <div class="form-row">
+        <label for="node-input-server"><i class="fa fa-server"></i> Server</label>
+        <input type="text" id="node-input-server" placeholder="Server">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="paperless-ngx-get-correspondents">
+    <p>Retrieves correspondents from paperless ngx.</p>
+    <h3>Inputs</h3>
+    <p>
+           </p>
+    <h3>Outputs</h3>
+    <p>
+        Array of paperless correspondents.
+    </p>
+    <h3>Attributes</h3>
+    <p>
+        <code>name</code> Label for the node</p>
+</script>

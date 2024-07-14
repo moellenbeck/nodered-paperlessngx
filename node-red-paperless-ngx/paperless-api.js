@@ -6,6 +6,12 @@ module.exports = class PaperlessNgxApi {
         this._authToken = apiAuthToken;
     }
 
+    static create(hostname, port, apiKey, tls = true) {
+        const protocol = tls === true ? "https" : "http";
+        const baseurl = protocol + "://" + hostname + ':' + port;
+
+        return new this(baseurl, apiKey)
+    }
 
     async request(method, endpoint, params) {
         let url = `${this._baseUrl}${endpoint}`
