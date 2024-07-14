@@ -1,0 +1,56 @@
+<script type="text/javascript">
+    RED.nodes.registerType('paperless-ngx-get-documents', {
+        name: "Get documents",
+        category: 'Paperless NGX',
+        color: '#387440',
+
+        defaults: {
+            server: { value: "", type: "paperless-ngx-server", required: true },
+            query: { value: "", required: false },
+            enrich: { value: true, required: true }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "font-awesome/fa-file",
+        label: function () {
+            return this.query ? `[Get] ${this.query}` : "Get Documents";
+
+        },
+        paletteLabel: "Get Documents",
+
+    });
+
+
+</script>
+
+<script type="text/html" data-template-name="paperless-ngx-get-documents">
+    <div class="form-row">
+        <label for="node-input-server"><i class="fa fa-server"></i> Server</label>
+        <input type="text" id="node-input-server" placeholder="Server">
+    </div>
+    <div class="form-row">
+        <label for="node-input-query"><i class="fa fa-filter"></i> Query</label>
+        <input type="text" id="node-input-query">
+    </div>
+    <div class="form-row">
+        <label for="node-input-enrich"><i class="fa fa-hashtag"></i> Resolve IDs</label>
+        <input type="checkbox" id="node-input-enrich" style="display: inline-block; width: auto; vertical-align: top;" checked>
+    </div>
+
+
+</script>
+
+<script type="text/html" data-help-name="paperless-ngx-get-documents">
+    <p>Retrieves documents from paperless ngx.</p>
+    <h3>Inputs</h3>
+    <p>
+        The input message object is available for the <code>filter</code> property via mustache template syntax.
+    </p>
+    <h3>Outputs</h3>
+    <p>
+        Array of paperless documents.
+    </p>
+    <h3>Attributes</h3>
+    <p>
+        <code>query</code> JSON object with filter definition. Supports mustache syntax for templates.</p>
+</script>

@@ -1,0 +1,28 @@
+{
+  "name": "@gorootde/node-red-paperless-ngx",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "LGPL-3.0-or-later",
+  "keywords": [
+    "node-red",
+    "paperless-ngx"
+  ],
+  "bugs": {
+    "url": "https://github.com/gorootde/nodered-paperlessngx/issues"
+  },
+  "node-red": {
+    "version": ">=2.0.0",
+    "nodes": {
+      "paperless-ngx-get-documents": "node-red-paperless-ngx/get-documents.js",
+      "paperless-ngx-server": "node-red-paperless-ngx/server.js"
+    }
+  },
+  "packageManager": "yarn@3.3.1",
+  "dependencies": {
+    "node-fetch": "2",
+    "node-fetch-commonjs": "^3.3.2"
+  }
+}
