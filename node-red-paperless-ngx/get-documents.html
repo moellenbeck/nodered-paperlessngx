@@ -7,13 +7,14 @@
         defaults: {
             server: { value: "", type: "paperless-ngx-server", required: true },
             query: { value: "", required: false },
-            enrich: { value: true, required: true }
+            enrich: { value: true, required: true },
+            name: { value: undefined, required: false }
         },
         inputs: 1,
         outputs: 1,
         icon: "font-awesome/fa-file",
         label: function () {
-            return this.query ? `[Get] ${this.query}` : "Get Documents";
+            return this.name ? this.name : "Get Documents";
 
         },
         paletteLabel: "Get Documents",
@@ -36,7 +37,10 @@
         <label for="node-input-enrich"><i class="fa fa-hashtag"></i> Resolve IDs</label>
         <input type="checkbox" id="node-input-enrich" style="display: inline-block; width: auto; vertical-align: top;" checked>
     </div>
-
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name">
+    </div>
 
 </script>
 
