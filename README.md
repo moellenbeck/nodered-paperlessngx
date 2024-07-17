@@ -7,3 +7,4 @@ Paperless NGX nodes for node-red
 - `Get Correspondents` - retrieves all correspondents
 - `Get custom fields` - retrieves all custom fields
 - `Update document` - updates fields of a single document
+- `Download document` - download a document

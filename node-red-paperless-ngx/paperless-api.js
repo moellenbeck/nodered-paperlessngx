@@ -13,7 +13,7 @@ module.exports = class PaperlessNgxApi {
         return new this(baseurl, apiKey)
     }
 
-    async request(method, endpoint, params, data = undefined) {
+    async request(method, endpoint, params, data = undefined, asJson = true) {
         let url = `${this._baseUrl}${endpoint}`
         if (params) {
             url += `?${params}`
@@ -37,8 +37,13 @@ module.exports = class PaperlessNgxApi {
 
         const response = await fetch(url, request)
 
-        const result = await response.json()
-        return result?.results
+        if (asJson) {
+            const result = await response.json()
+            return result?.results
+        } else {
+            return response
+        }
+
     }
 
     async getDocuments(query) {
@@ -79,8 +84,20 @@ module.exports = class PaperlessNgxApi {
 
     async updateDocument(documentId, data) {
         const url = `/api/documents/${documentId}/`
-        console.log("updating", url)
+
         return await this.request('PATCH', url, undefined, data)
+    }
+
+
+    async downloadDocument(documentId) {
+        const url = `/api/documents/${documentId}/download/`
+        const response = await this.request('GET', url, undefined, undefined, false)
+        const buffer = await response.arrayBuffer();
+        const stringifiedBuffer = Buffer.from(buffer).toString('base64');
+        const contentType = response.headers.get('content-type');
+        const result = { contentType: contentType, data: stringifiedBuffer }
+
+        return result
     }
 
 }

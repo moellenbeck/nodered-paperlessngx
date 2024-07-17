@@ -1,0 +1,56 @@
+<script type="text/javascript">
+    RED.nodes.registerType('paperless-ngx-download-document', {
+        name: "Download document",
+        category: 'Paperless NGX',
+        color: '#387440',
+
+        defaults: {
+            server: { value: "", type: "paperless-ngx-server", required: true },
+            name: { value: undefined, required: false },
+            docid: { value: undefined, required: false }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "font-awesome/fa-download",
+        label: function () {
+            return this.name ? this.name : "Download Document";
+
+        },
+        paletteLabel: "Download Document",
+
+    });
+
+
+</script>
+
+<script type="text/html" data-template-name="paperless-ngx-download-document">
+    <div class="form-row">
+        <label for="node-input-server"><i class="fa fa-server"></i> Server</label>
+        <input type="text" id="node-input-server" placeholder="Server">
+    </div>
+    <div class="form-row">
+        <label for="node-input-docid"><i class="fa fa-hashtag"></i> Document ID</label>
+        <input type="text" id="node-input-docid">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name">
+    </div>
+
+</script>
+
+<script type="text/html" data-help-name="paperless-ngx-get-documents">
+    <p>Downloads a document from paperless ngx.</p>
+    <h3>Inputs</h3>
+    <p>
+        <code>payload.docid</code> the ID of the document to be downloaded. This will overwrite the document id specified in node config.
+    </p>
+    <h3>Outputs</h3>
+    <p>
+        Base64 encoded document as <code>payload</code>
+    </p>
+    <h3>Attributes</h3>
+    <p>
+        <code>Document ID</code> The ID of the document to be downloaded.
+    </p>
+</script>

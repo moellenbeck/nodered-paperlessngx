@@ -1,6 +1,6 @@
 {
   "name": "@gorootde/node-red-paperless-ngx",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,6 +21,7 @@
       "paperless-ngx-get-correspondents": "node-red-paperless-ngx/get-correspondents.js",
       "paperless-ngx-get-customfields": "node-red-paperless-ngx/get-customfields.js",
       "paperless-update-document": "node-red-paperless-ngx/update-document.js",
+      "paperless-download-document": "node-red-paperless-ngx/download-document.js",
       "paperless-ngx-server": "node-red-paperless-ngx/server.js"
     }
   },
