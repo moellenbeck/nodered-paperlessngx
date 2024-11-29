@@ -36,7 +36,10 @@ module.exports = class PaperlessNgxApi {
         }
 
         const response = await fetch(url, request)
+        if (response.status == 401) {
+            throw new Error(`HTTP ${response.status} - ${await response.text()}`);
 
+        }
         if (asJson) {
             const result = await response.json()
             return result?.results
