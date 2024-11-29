@@ -13,7 +13,8 @@ module.exports = function (RED) {
                 this.server.port,
                 this.server.apiKey,
                 this.server.tlsEnabled)
-            let documents = await api.getDocuments(this.filter)
+            const filter = !this.filter || this.filter === "" ? msg.query : this.filter
+            let documents = await api.getDocuments(filter)
             if (this.enrich) {
                 const tags = await api.getTags()
                 const correspondents = await api.getCorrespondents()

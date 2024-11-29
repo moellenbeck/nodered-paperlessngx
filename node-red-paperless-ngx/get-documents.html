@@ -48,7 +48,7 @@
     <p>Retrieves documents from paperless ngx.</p>
     <h3>Inputs</h3>
     <p>
-        The input message object is available for the <code>filter</code> property via mustache template syntax.
+        <code>query</code> Paperless query object. This is only used if the property on the UI is empty. See paperless search REST endpoint for documentation of format.
     </p>
     <h3>Outputs</h3>
     <p>
@@ -56,5 +56,5 @@
     </p>
     <h3>Attributes</h3>
     <p>
-        <code>query</code> JSON object with filter definition. Supports mustache syntax for templates.</p>
+        <code>query</code> JSON object with filter definition.</p>
 </script>
