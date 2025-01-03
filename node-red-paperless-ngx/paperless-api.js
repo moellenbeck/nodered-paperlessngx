@@ -19,6 +19,8 @@ module.exports = class PaperlessNgxApi {
             url += `?${params}`
         }
 
+        console.log(url)
+
         const request = {
             method: method,
             credentials: 'include',
