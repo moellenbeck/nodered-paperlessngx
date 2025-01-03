@@ -52,12 +52,15 @@ module.exports = class PaperlessNgxApi {
     }
 
     async getDocuments(query) {
+      /*
         const params = new URLSearchParams({
             query: query,
             page_size: 100000
         })
         return await this.request('GET', '/api/documents/', params)
-    }
+        */
+        return await this.request('GET', '/api/documents/', query)
+      }
 
     async getTags() {
         const params = new URLSearchParams({
